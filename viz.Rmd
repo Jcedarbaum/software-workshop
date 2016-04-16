@@ -43,4 +43,26 @@ s = s+
   aes(color=continent)
 s
 ggsave('pretty_picture.pdf', s) #s tells ggplot where to look when saving...sometimes it misses stuff
+```
+
+
+### And then we did some maps within RStudio...but I'm broken and cannot continue.  And there are really super helpful tutorial stuffs on the [website](http://remi-daigle.github.io/2016-04-15-UCSB/).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
