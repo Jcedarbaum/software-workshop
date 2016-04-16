@@ -1,4 +1,10 @@
-## My-project
+# My-project
+
+##this is a sub-heading
+
+###and a sub-sub heading
+
+#####and a sub-sub-sub-sub-sub heading
 
 Playing with [Software Carpentry at UCSB](http://remi-daigle.github.io/2016-04-15-UCSB).
 
