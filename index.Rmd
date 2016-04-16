@@ -25,3 +25,5 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 variable <- c(1,2,3,5,7,90)
 summary(variable)
 ```
+
+![](http://4.darkroom.shortlist.com/980/342dcc47e0731346be638026eb8058c2:96dbb652ec3b47959a0492ffc693b803/squirrel.jpg)
