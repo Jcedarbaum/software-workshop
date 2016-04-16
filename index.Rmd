@@ -14,7 +14,11 @@ variable <- c(1,2,3,5,7,90)
 summary(variable)
 ```
 
+
+
+
 Here is a random graph:
+
 ```{r, echo=FALSE}
 plot(cars)
 ```
