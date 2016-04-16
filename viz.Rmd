@@ -1,0 +1,46 @@
+---
+title: "Viz"
+author: "Jeff Cedarbaum"
+date: "April 16, 2016"
+output: html_document
+---
+
+```{r load, results = 'hide', message=FALSE, warning=FALSE} 
+#^ will still show code, but not results, messages or warnings
+
+#install.packages('ggplot2')
+
+library(dplyr)
+library(ggplot2)
+library(gapminder)
+
+summary(gapminder)
+
+# setup dataframe
+g <- gapminder %>%
+  filter(year==2007) %>%   # most recent year 
+  mutate(pop_m = pop/1e6)  # population, millions
+
+# plot scatterplot of most recent year 
+s = ggplot(g, aes(x=gdpPercap, y=lifeExp)) +
+  geom_point()
+s
+
+# add title, update axes labels
+s = s + 
+  ggtitle('Health & Wealth of Nations for 2007') +
+  xlab('GDP per capita ($/year)') +
+  ylab('Life expectancy (years)')
+s
+
+s + geom_smooth()
+
+s = s+
+  aes(size=pop_m)
+s
+
+s = s+
+  aes(color=continent)
+s
+ggsave('pretty_picture.pdf', s) #s tells ggplot where to look when saving...sometimes it misses stuff
+

@@ -1,0 +1,92 @@
+---
+title: "Gapminder Analysis with dplyr"
+author: "Jeff Cedarbaum"
+date: "April 16, 2016"
+output: html_document
+---
+
+## Load dplyr
+
+```{r}
+#### install.packages("dplyr") #don't want to download this every time it runs...first time only
+library(dplyr) #do this every time I restart R and want to wrangle some data
+```
+
+## Load Gapminder
+
+```{r}
+# install.packages('gapminder') #Only do this once
+library(gapminder) 
+```
+
+
+## Exploration with gapminder
+
+```{r}
+#with dplyr
+#Subsetting rows
+filter(gapminder, lifeExp < 29)
+filter(gapminder, country == "Rwanda")
+a <- filter(gapminder, country %in% c("Rwanda", "Afghanistan")) #
+
+
+
+# the pipeline %>% (cntrl-shift-m) 
+gapminder %>% head
+gapminder %>% head(3)
+
+#subsetting columns
+select(gapminder, year, lifeExp) #cool.
+gapminder %>% select(year, lifeExp) #does the same thing, but with %>% 
+
+# %>%  takes whatever is on the left of the %>%  and passes it to whatever is on the right as the first argument
+
+gapminder %>% 
+  select(year, lifeExp) %>% 
+  head(4) %>% 
+  tail(1) #can make it do multiple steps in one go
+
+
+```
+
+## Calculating the mean GDP of Cambodia
+
+```{r}
+gapminder %>% 
+  #filter(country == "Cambodia") %>%  #when you take this line out, it'll give you the rest of the function (below) for every country...or you could make a for loop
+  select(country, year, pop, gdpPercap) %>%  #can select the columns you want
+  #select(-continent, -lifeExp) #or the columns you don't want
+  mutate(gdp = pop * gdpPercap) %>% 
+  group_by(country) %>% 
+  summarise(mean_gdp = mean(gdp)) %>% 
+  ungroup() #do this cause...they said so. clean up after yourself?
+
+```
+
+
+# Using Mutate (already used it above...but it's pretty cool)
+
+```{r}
+gapminder %>% 
+  mutate(gdp = pop * gdpPercap)
+  
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
